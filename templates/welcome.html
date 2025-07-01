@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h4>Welcome, {{ user.family_name }}!</h4>
+        <div class="img-box">
+          {% if user.picture %}
+            <img class="img" 
+                 src="{{ user.picture }}" 
+                 alt="Profile Picture"
+                 onerror="this.src='{{ url_for('static', path='icons/avatar.png') }}'" />
+          {% else %}
+            <img class="img" src="{{ url_for('static', path='icons/avatar.png') }}" alt="Default Avatar" />
+          {% endif %}
+        </div>
+        <p>Email: {{ user.email }}</p>
+        <p>Full Name: {{ user.name }}</p>
+      </div>
+      <a href="/logout" class="google-btn">
+        <div class="google-icon"></div>
+        <span class="btn-text">Logout</span>
+      </a>
+    </div>
+  </body>
+</html>
